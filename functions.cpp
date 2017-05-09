@@ -8,7 +8,6 @@ Player score[255];
 
 short ships_my = 20;
 short ships_pc = 20;
-
 //// Coordinates //
 void GotoXY(short X, short Y)
 {
@@ -101,27 +100,57 @@ void print_table(char **temp_my, char **temp_pc) {
 
 	system("cls");
 	cout << "  ABVGDEJZKL" << endl;
-	cout << "---------------------" << endl;
+	cout << " " << (char)201;
+	for (int i = 0; i < 10; i++)
+	{
+		cout << (char)205;
+	}
+
+	cout << (char)187;
+	cout << endl;
+
 	for (int i = 0; i < table_size; i++)
 	{
-		cout << i << " ";
+		cout << i << (char)186;
 		for (int j = 0; j < table_size ; j++)
 		{
 			cout << temp_my[i][j];
 		}
-		cout << endl;
+		cout << (char)186 << endl;
 	}
-	cout << "  ABVGDEJZKL" << endl;
-	cout << "---------------------" << endl;
+	cout << " " << (char)200;
+	for (int i = 0; i < 10; i++)
+	{
+		cout << (char)205;
+	}
+	cout << (char)188;
+
+	/// Print field with my Ships ////
+	cout << "\n  ABVGDEJZKL" << endl;
+	cout << " " << (char)201;
+	for (int i = 0; i < 10; i++)
+	{
+		cout << (char)205;
+	}
+
+	cout << (char)187;
+	cout << endl;
+
 	for (int i = 0; i < table_size; i++)
 	{
-		cout << i << " ";
+		cout << i << (char)186;
 		for (int j = 0; j < table_size; j++)
 		{
 			cout << temp_pc[i][j];
 		}
-		cout << endl;
+		cout << (char)186 << endl;
 	}
+	cout << " " << (char)200;
+	for (int i = 0; i < 10; i++)
+	{
+		cout << (char)205;
+	}
+	cout << (char)188;
 }
 /// Turns ///
 int turns(char **temp, char **field, Position pos) {
@@ -159,7 +188,6 @@ void batle(char **field_my, char **temp_my, char **field_pc, char **temp_pc) {
 			do
 			{
 				keyword(cord.y_pos, cord.x_pos);
-
 			} while (temp_my[cord.y_pos][cord.x_pos] == turn || temp_my[cord.y_pos][cord.x_pos] == ship_ran || temp_my[cord.y_pos][cord.x_pos] == ship_death);
 			Q = turns(temp_my, field_pc, cord);
 			Q ? score[0].score += popav, ships_pc-- : score[0].score += promax, ships_pc;
@@ -179,6 +207,11 @@ void batle(char **field_my, char **temp_my, char **field_pc, char **temp_pc) {
 				print_table(temp_my, temp_pc);
 
 			}
+			if (ships_my == 0)
+			{
+				print_table(temp_my, temp_pc);
+			}
+
 			Q ? ships_my-- : ships_my;
 
 		} while (Q && ships_my != 0);
@@ -187,7 +220,7 @@ void batle(char **field_my, char **temp_my, char **field_pc, char **temp_pc) {
 		{
 			write_stat();
 
-			(ships_pc < ships_my) ? cout << "	Player Win: -	" << score[0].name << "  " : cout << "	PC Win	-	";
+			(ships_pc < ships_my) ? cout << "\n	Player - " << score[0].name << "Win: " : cout << "\n PC Win	- Your Score: ";
 			cout << score[0].score << endl;
 			cin.clear();
 			getch();
