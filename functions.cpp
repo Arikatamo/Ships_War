@@ -202,6 +202,7 @@ void batle(char **field_my, char **temp_my, char **field_pc, char **temp_pc) {
 
 			} while (temp_pc[cord.y_pos][cord.x_pos] == turn || temp_pc[cord.y_pos][cord.x_pos] == ship_ran || temp_pc[cord.y_pos][cord.x_pos] == ship_death);
 			Q = turns(temp_pc, field_my, cord);
+			Q ? ships_my-- : ships_my;
 			if (temp_pc[cord.y_pos][cord.x_pos] == sea)
 			{
 				print_table(temp_my, temp_pc);
@@ -211,8 +212,6 @@ void batle(char **field_my, char **temp_my, char **field_pc, char **temp_pc) {
 			{
 				print_table(temp_my, temp_pc);
 			}
-
-			Q ? ships_my-- : ships_my;
 
 		} while (Q && ships_my != 0);
 
