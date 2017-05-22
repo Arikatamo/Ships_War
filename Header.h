@@ -17,7 +17,7 @@ using namespace std;
 #define s_2 '2'
 #define s_1 '1'
 #define popav 30
-#define promax -8
+#define promax -25
 #define KILL 100
 
 enum ConsoleColor
@@ -66,7 +66,7 @@ void SetColor(int text, int background);
 void menu(char **field_my, char **temp_my, char **field_pc, char **temp_pc);
 void go(int x, char **field_my, char **temp_my, char **field_pc, char **temp_pc); // Choice of menu
 // --- END --- ///
-// Turns and Print
+ // Turns and Print
 int turns(char **temp, char **field, Position pos);
 void print_table(char **temp_my, char **field_my);
 void find_way(char **field, short x, short y, char **temp);

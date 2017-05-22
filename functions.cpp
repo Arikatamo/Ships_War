@@ -1,8 +1,9 @@
 #pragma once
 #include "Header.h"
 #include <fstream>
+#include <iomanip>
 
-COORD pos = {3,3};
+COORD pos = { 3,3 };
 Position cord;
 Player score[255];
 
@@ -21,14 +22,14 @@ void keyword(short x, short y) {
 		char c = 0;
 
 		while (c != 13) //завершение программы по нажатию клавиши ENTER
-		{ 
+		{
 			c = _getch();
 			switch (c) {
 			case 75:
 			{
 				if (pos.X < 3)
 				{
-					pos.X; 
+					pos.X;
 				}
 				else
 				{
@@ -76,7 +77,7 @@ void keyword(short x, short y) {
 				}
 				SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
 				break;
-			} 
+			}
 			case 13:
 			{
 				cord.x_pos = pos.X - 2;
@@ -112,7 +113,7 @@ void print_table(char **temp_my, char **temp_pc) {
 	for (int i = 0; i < table_size; i++)
 	{
 		cout << i << (char)186;
-		for (int j = 0; j < table_size ; j++)
+		for (int j = 0; j < table_size; j++)
 		{
 			cout << temp_my[i][j];
 		}
@@ -225,7 +226,6 @@ void batle(char **field_my, char **temp_my, char **field_pc, char **temp_pc) {
 			getch();
 			ships_my = 20;
 			ships_pc = 20;
-			//menu(field_my, temp_my, field_pc, temp_pc);
 			break;
 		}
 	}
@@ -260,12 +260,12 @@ int write_temp_field(char **temp, char **field_my, bool choice) {
 				{
 					temp[i][j] = sea;
 				}
-				
+
 			}
 		}
 		return **temp;
 	}
-	
+
 }
 int bort(short x, short y, char **field) {
 
@@ -416,7 +416,6 @@ int perevirka_4(short x, short y, char **field, short ship_value) {
 
 	for (short j = 0; j < ship_value; j++)
 	{
-		//x - j == -1 ? a = false : a;
 		if (x - ship_value > 0 && !isdigit(field[y][x - j]) == field[y][x - j])
 		{
 			if (isdigit(field[y][x - j]))
@@ -557,14 +556,6 @@ int rewrite_table(char **field_my) {
 		{
 			for (unsigned j = 0; j < table_size + 1; j++)
 			{
-				/*if (!isdigit(line))
-				{
-					field_my[i][j] = sea;
-				}
-				else
-				{
-					field_my[i][j] = ship;
-				}*/
 				field_my[i][j] = line;
 				field.get(line);
 
@@ -695,7 +686,7 @@ void find_way(char **field, short x, short y, char **temp) {
 void write_stat() {
 
 	ofstream file;
-	file.open("p_scores.dat", ios::app , ios_base::binary);
+	file.open("p_scores.dat", ios::app, ios_base::binary);
 
 	if (!file.is_open())
 	{
@@ -725,16 +716,16 @@ void print_stat() {
 		file.getline(score[i].name, 50, '|');
 		file.getline(score[i].win_no, 55, '|');
 		file >> score[i].score;
-	
+
 
 
 		if (!file.eof())
 		{
 			cout << "	+	Player - ";
-			SetColor(6, 0); cout << score[i].name; SetColor(15, 0); 
-			cout << "  -  "; 
+			SetColor(6, 0); cout << setw(20) << left << score[i].name; SetColor(15, 0);
+			cout << "  -  ";
 			(atoi(score[i].win_no) == 0) ? SetColor(4, 0) : SetColor(2, 0);
-			cout << ((atoi(score[i].win_no) == 0) ? "Lose" : "Win");
+			cout << setw(5) << left << ((atoi(score[i].win_no) == 0) ? "Lose" : "Win");
 			SetColor(15, 0);
 			cout << " - Score: " << score[i].score << endl;
 

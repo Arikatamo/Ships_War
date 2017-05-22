@@ -11,7 +11,7 @@ void SetColor(int text, int background) // устанавливаем цвет
 }
 void choice(char **field_my, char **temp_my, char **field_pc, char **temp_pc);
 void menu(char **field_my, char **temp_my, char **field_pc, char **temp_pc)
-{	
+{
 	system("cls"); // очистить экран
 	if (m_pos == 0)
 	{
@@ -24,7 +24,7 @@ void menu(char **field_my, char **temp_my, char **field_pc, char **temp_pc)
 	}
 	if (m_pos == 1)
 	{
-		cout << "   Start\n"; 
+		cout << "   Start\n";
 		SetColor(6, 0); cout << " + Statistics\n"; SetColor(15, 0);
 		cout << "   Set Ships Random\n";
 		cout << "   Set Ships From File\n";
@@ -43,7 +43,7 @@ void menu(char **field_my, char **temp_my, char **field_pc, char **temp_pc)
 	if (m_pos == 3)
 	{
 		cout << "   Start\n";
-		cout << "   Statistics\n"; 
+		cout << "   Statistics\n";
 		cout << "   Set Ships Random\n";
 		SetColor(6, 0); cout << " + Set Ships From File\n"; SetColor(15, 0);
 		cout << "   Exit\n";
@@ -82,13 +82,13 @@ l:
 }
 void go(int x, char **field_my, char **temp_my, char **field_pc, char **temp_pc) {
 
-	if (x == 0) 
-	{ 
+	if (x == 0)
+	{
 		if (set == 0)
 		{
-		SetColor(4, 0); cout << "Ships not set" << endl; SetColor(15, 0);
-		getch();
-		menu(field_my, temp_my, field_pc, temp_pc);
+			SetColor(4, 0); cout << "Ships not set" << endl; SetColor(15, 0);
+			getch();
+			menu(field_my, temp_my, field_pc, temp_pc);
 		}
 		batle(field_my, temp_my, field_pc, temp_pc);
 		set = 0;
@@ -96,10 +96,10 @@ void go(int x, char **field_my, char **temp_my, char **field_pc, char **temp_pc)
 	}
 	if (x == 1)
 	{
-		print_stat(); 
+		print_stat();
 		getch();
 		menu(field_my, temp_my, field_pc, temp_pc);
-	} 
+	}
 	if (x == 2)
 	{
 		ships_placer(field_my);
