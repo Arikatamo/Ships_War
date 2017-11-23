@@ -9,7 +9,7 @@ using namespace std;
 #define ship (char)219
 #define ship_death (char)176
 #define ship_ran (char)178
-#define table_size 10
+#define table_size 20
 #define sea '~'
 #define turn 'x'
 #define s_4 '4'
@@ -19,6 +19,8 @@ using namespace std;
 #define popav 30
 #define promax -25
 #define KILL 100
+#define max_x 20
+#define max_y 20
 
 enum ConsoleColor
 {

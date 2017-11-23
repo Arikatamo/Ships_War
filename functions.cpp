@@ -40,7 +40,7 @@ void keyword(short x, short y) {
 			}
 			case 77:
 			{
-				if (pos.X > 10)
+				if (pos.X > max_x)
 				{
 					pos.X;
 				}
@@ -67,7 +67,7 @@ void keyword(short x, short y) {
 
 			case 80:
 			{
-				if (pos.Y > 10)
+				if (pos.Y > max_y)
 				{
 					pos.Y;
 				}
@@ -92,8 +92,8 @@ void keyword(short x, short y) {
 }
 void pc_cord(short x, short y) {
 
-	cord.x_pos = rand() % 9;
-	cord.y_pos = rand() % 9;
+	cord.x_pos = rand() % max_x;
+	cord.y_pos = rand() % max_y;
 
 }
 /// Print/Reprint table ///
@@ -101,8 +101,8 @@ void print_table(char **temp_my, char **temp_pc) {
 
 	system("cls");
 	cout << "  ABVGDEJZKL" << endl;
-	cout << " " << (char)201;
-	for (int i = 0; i < 10; i++)
+	cout << " " << ((max_x > 10)? " " : "" )<< (char)201;
+	for (int i = 0; i < max_x; i++)
 	{
 		cout << (char)205;
 	}
@@ -112,15 +112,20 @@ void print_table(char **temp_my, char **temp_pc) {
 
 	for (int i = 0; i < table_size; i++)
 	{
-		cout << i << (char)186;
+		cout << i;
+		if (i < 10)
+		{
+			cout << " ";
+		}
+		cout << (char)186;
 		for (int j = 0; j < table_size; j++)
 		{
 			cout << temp_my[i][j];
 		}
 		cout << (char)186 << endl;
 	}
-	cout << " " << (char)200;
-	for (int i = 0; i < 10; i++)
+	cout << " " << ((max_x > 10) ? " " : "")  << (char)200;
+	for (int i = 0; i < max_x; i++)
 	{
 		cout << (char)205;
 	}
@@ -128,8 +133,8 @@ void print_table(char **temp_my, char **temp_pc) {
 
 	/// Print field with my Ships ////
 	cout << "\n  ABVGDEJZKL" << endl;
-	cout << " " << (char)201;
-	for (int i = 0; i < 10; i++)
+	cout << " " << ((max_x > 10) ? " " : "") << (char)201;
+	for (int i = 0; i < max_x; i++)
 	{
 		cout << (char)205;
 	}
@@ -139,15 +144,20 @@ void print_table(char **temp_my, char **temp_pc) {
 
 	for (int i = 0; i < table_size; i++)
 	{
-		cout << i << (char)186;
+		cout << i;
+		if (i < 10)
+		{
+			cout << " ";
+		}
+		cout << (char)186;
 		for (int j = 0; j < table_size; j++)
 		{
 			cout << temp_pc[i][j];
 		}
 		cout << (char)186 << endl;
 	}
-	cout << " " << (char)200;
-	for (int i = 0; i < 10; i++)
+	cout << " " << ((max_x > 10) ? " " : "") << (char)200;
+	for (int i = 0; i < max_x; i++)
 	{
 		cout << (char)205;
 	}
